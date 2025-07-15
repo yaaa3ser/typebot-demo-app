@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics for {{ bot_id }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .analytics-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .stat {
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+        .stat strong {
+            color: #2980b9;
+        }
+        .back-btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .back-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Analytics for Bot: {{ bot_id }}</h1>
+    <div class="analytics-container">
+        <div class="stat">
+            <strong>Total Sessions Started:</strong> {{ total_sessions }}
+        </div>
+        <div class="stat">
+            <strong>Bot Usage Stats (Completed):</strong> {{ usage_stats }}
+        </div>
+        <div class="stat">
+            <strong>Last Run Per User:</strong> {{ last_run if last_run != "N/A" else "No data available" }}
+        </div>
+    </div>
+    <a href="{{ url_for('home') }}?token={{ token }}" class="back-btn">Back to Bot List</a>
+</body>
+</html>

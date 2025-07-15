@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typebot Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .bot-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .bot-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .bot-card h3 {
+            margin: 0 0 10px;
+            color: #2c3e50;
+        }
+        .bot-card button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .bot-card button:hover {
+            background-color: #2980b9;
+        }
+        .analytics-btn {
+            background-color: #e74c3c;
+            margin-top: 5px;
+        }
+        .analytics-btn:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <h1>Typebot + Demo Web App</h1>
+    {% if not bots %}
+        <p>No bots available. Check API token and workspace ID.</p>
+    {% else %}
+        <div class="bot-list">
+            {% for bot in bots %}
+                <div class="bot-card">
+                    <h3>{{bot.icon}} {{ bot.name }}</h3>
+                    <form action="{{ url_for('embed_bot', bot_id=bot.id) }}" method="GET" style="display:inline;">
+                        <input type="hidden" name="token" value="{{ token }}">
+                        <button type="submit">Open Bot</button>
+                    </form>
+                    <form action="{{ url_for('get_analytics', bot_id=bot.id) }}" method="GET" style="display:inline;">
+                        <input type="hidden" name="token" value="{{ token }}">
+                        <button type="submit" class="analytics-btn">View Analytics</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</body>
+</html>

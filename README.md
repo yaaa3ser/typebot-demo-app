@@ -49,12 +49,12 @@ python app.py
 - **Environment**: Virtual environment for dependency management
 
 ## API Usage or Postman Collection
-- **List Bots**: `GET https://app.typebot.io/api/v1/typebots?workspaceId={TYPEBOT_WORKSPACE_ID}`
+- **List Bots**: `GET http://localhost:3000/api/v1/typebots?workspaceId={TYPEBOT_WORKSPACE_ID}`
     - Headers: `Authorization: Bearer {TYPEBOT_API_TOKEN}`
-- **Embed Bot**: `GET https://typebot.co/{bot_public_id}`
-- **Get Bot Details**: `GET https://app.typebot.io/api/v1/typebots/{bot_id}`
+- **Embed Bot**: `GET http://localhost:3001/{bot_public_id}`
+- **Get Bot Details**: `GET http://localhost:3000/api/v1/typebots/{bot_id}`
     - Headers: `Authorization: Bearer {TYPEBOT_API_TOKEN}`
-- **Get Results**: `GET https://app.typebot.io/api/v1/typebots/{bot_id}/results?limit=50&timeFilter=last7Days`
+- **Get Results**: `GET http://localhost:3000/api/v1/typebots/{bot_id}/results?limit=50&timeFilter=last7Days`
     - Headers: `Authorization: Bearer {TYPEBOT_API_TOKEN}`
 - **use the above endpoints with a tool like Postman or curl for testing.**
 

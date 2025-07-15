@@ -4,7 +4,7 @@ import requests
 import secrets
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(override=True)
 
 
 app = Flask(__name__)
@@ -17,7 +17,7 @@ USERS = {"testuser": VALID_TOKEN}
 # Typebot API config
 TYPEBOT_API_TOKEN = os.getenv("TYPEBOT_API_TOKEN", "abc12345")
 TYPEBOT_WORKSPACE_ID = os.getenv("TYPEBOT_WORKSPACE_ID", "xyz12345")
-API_BASE_URL = "https://app.typebot.io/api/v1"
+API_BASE_URL = "http://localhost:3000/api/v1"
 
 
 
